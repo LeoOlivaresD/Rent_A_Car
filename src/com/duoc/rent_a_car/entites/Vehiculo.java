@@ -5,18 +5,18 @@ public abstract class Vehiculo {
     private String patente;
     private Integer capacidadPasajeros;
     private String marca;
-    private String anio;
-    private String modelo;
-
+    private String categoria;
+    private Integer valorArriendo;
+    
     public Vehiculo() {
     }
 
-    public Vehiculo(String patente, Integer capacidadPasajeros, String marca, String anio, String modelo) {
+    public Vehiculo(String patente, Integer capacidadPasajeros, String marca, String categoria, Integer valorArriendo) {
         this.patente = patente;
         this.capacidadPasajeros = capacidadPasajeros;
         this.marca = marca;
-        this.anio = anio;
-        this.modelo = modelo;
+        this.categoria = categoria;
+        this.valorArriendo = valorArriendo;
     }
 
     public String getPatente() {
@@ -43,27 +43,27 @@ public abstract class Vehiculo {
         this.marca = marca;
     }
 
-    public String getAnio() {
-        return anio;
+    public Integer getValorArriendo() {
+        return valorArriendo;
     }
 
-    public void setAnio(String anio) {
-        this.anio = anio;
+    public void setValorArriendo(Integer valorArriendo) {
+        this.valorArriendo = valorArriendo;
     }
 
-    public String getModelo() {
-        return modelo;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     @Override
     public String toString() {
-        return "Vehiculo{" + "patente=" + patente + ", capacidadPasajeros=" + capacidadPasajeros + ", marca=" + marca + ", anio=" + anio + ", modelo=" + modelo + '}';
+        return "Vehiculo{" + "patente=" + patente + ", capacidadPasajeros=" + capacidadPasajeros + ", marca=" + marca + ", categoria=" + categoria + ", valorArriendo=" + valorArriendo + '}';
     }
-    
+
     //Metodo abstracto
     public abstract void showDataCar();
 }
