@@ -1,5 +1,6 @@
 package com.duoc.rent_a_car;
 
+import com.duoc.rent_a_car.entites.cars.Camion;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -11,6 +12,10 @@ public class Rent_A_Car {
 
     public static void main(String[] args) {
         System.out.println("Bienvenido al sistema de renta de autos Brief Drive");
+        Camion camion = new Camion("8 toneladas","patente", 5," mercedes", " carga", 150000, "Camion");
+        System.out.println("Objeto creado");
+        camion.showDataCar();
+        System.out.println("Metodo llamado");
         menu();
     }
 
