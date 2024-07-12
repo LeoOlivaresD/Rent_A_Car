@@ -1,22 +1,28 @@
 package com.duoc.rent_a_car.entites.client;
 
 import com.duoc.rent_a_car.entites.cars.Vehiculo;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Cliente {
+
     private Integer idCliente;
     private String nombreCliente;
+    private Integer telefono;
     private Vehiculo vehiculo;
-    private Map<String,Vehiculo> listaVehiculos;
+    private Map<String, Vehiculo> listaVehiculos;
 
     public Cliente() {
+        this.listaVehiculos = new HashMap<>(); // Inicialización del HashMap
     }
 
-    public Cliente(Integer idCliente, String nombreCliente, Vehiculo vehiculo, Map<String, Vehiculo> listaVehiculos) {
+    public Cliente(Integer idCliente, String nombreCliente, Integer telefono, Vehiculo vehiculo, Map<String, Vehiculo> listaVehiculos) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
-        this.vehiculo = vehiculo;
-        this.listaVehiculos = listaVehiculos;
+        this.telefono = telefono;
+        this.vehiculo = vehiculo; 
+                                //condicion              si es verddero    si es falso
+        this.listaVehiculos = (listaVehiculos != null) ? listaVehiculos : new HashMap<>();
     }
 
     public Integer getIdCliente() {
@@ -51,9 +57,16 @@ public class Cliente {
         this.listaVehiculos = listaVehiculos;
     }
 
+    public Integer getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
+    }
+
     @Override
     public String toString() {
-        return "Cliente{" + "idCliente=" + idCliente + ", nombreCliente=" + nombreCliente + ", vehiculo=" + vehiculo + ", listaVehiculos=" + listaVehiculos + '}';
+        return "Cliente{" + "idCliente=" + idCliente + ", nombreCliente=" + nombreCliente + ", telefono=" + telefono + ", vehiculo=" + vehiculo + ", listaVehiculos=" + listaVehiculos + '}';
     }
-    
 }
