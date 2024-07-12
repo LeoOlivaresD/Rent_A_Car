@@ -1,6 +1,8 @@
 package com.duoc.rent_a_car;
 
-import com.duoc.rent_a_car.entites.cars.Camion;
+import com.duoc.rent_a_car.entites.cars.OperacionesVehiculo;
+import com.duoc.rent_a_car.entites.client.Cliente;
+import com.duoc.rent_a_car.entites.client.OperacionesCliente;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,13 +11,11 @@ public class Rent_A_Car {
     static Scanner sc = new Scanner(System.in);
     static int opcionMenu = 0;
     static boolean romperBucle = false;
-
+    static Cliente cliente = new Cliente();
+    static OperacionesCliente operacionesCliente = new OperacionesCliente();
+    static OperacionesVehiculo operacionesVehiculo = new OperacionesVehiculo();
     public static void main(String[] args) {
-        System.out.println("Bienvenido al sistema de renta de autos Brief Drive");
-        Camion camion = new Camion("8 toneladas","patente", 5," mercedes", " carga", 150000, "Camion");
-        System.out.println("Objeto creado");
-        camion.showDataCar();
-        System.out.println("Metodo llamado");
+
         menu();
     }
 
@@ -38,13 +38,17 @@ public class Rent_A_Car {
             switch (opcionMenu) {
                 //REGISTRO USUARIO
                 case 1:
-
+                    operacionesCliente.registrarUsuario(cliente);
                     break;
                 // MOSTRAR TARIFAS DE ARRIENDO
                 case 2:
                     break;
                 //ARRENDAR VEHICULO
                 case 3:
+                    operacionesCliente.mostrarClientes(); //muestro los clientes registradoss
+                    System.out.println("Ingrese el id del usuario que desea arrendar un vehiculo");
+                    int idClienteSeleccionado = sc.nextInt();
+                   operacionesVehiculo.arrendarVehiculo(idClienteSeleccionado, operacionesCliente);
                     break;
                 //VER LISTADO DE VEHICULOS ARRENDADOS
                 case 4:
