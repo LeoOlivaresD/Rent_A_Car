@@ -4,7 +4,7 @@ public class Furgon extends Vehiculo{
 
     public Furgon() {
     }
-
+    
     public Furgon(String patente, Integer capacidadPasajeros, String marca, String categoria, Integer valorArriendo, String tipoVehiculo) {
         super(patente, capacidadPasajeros, marca, categoria, valorArriendo, tipoVehiculo);
     }
