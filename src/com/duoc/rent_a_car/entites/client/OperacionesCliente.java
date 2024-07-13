@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class OperacionesCliente implements IOperacionesCliente {
+
     private static final Scanner sc = new Scanner(System.in);
     private Cliente cliente;
     private List<Cliente> listaClientes;
@@ -39,8 +40,8 @@ public class OperacionesCliente implements IOperacionesCliente {
 
     public List<Cliente> mostrarClientes() {
         System.out.println("Mostrando id de clientes");
-        for (Cliente c : listaClientes ) {
-            System.out.println("Id Cliente: " + c.getIdCliente() + " Nombre cliente: " + c.getNombreCliente()); 
+        for (Cliente c : listaClientes) {
+            System.out.println("Id Cliente: " + c.getIdCliente() + " Nombre cliente: " + c.getNombreCliente());
         }
         return listaClientes;
     }
@@ -48,7 +49,8 @@ public class OperacionesCliente implements IOperacionesCliente {
     //Metodo implementdo por interface
     //CON CADA LLAMADA AL METODO CREARÉ NUEVOS USUARIOS QUE ALACENARÉ EN MI LISTA
     @Override
-    public void registrarUsuario(Cliente cliente) {
+    public void registrarUsuario() {
+        Cliente cliente = new Cliente();
         Boolean cicloDoWhile = true;
         Random rand = new Random();
         int min = 1;
@@ -91,14 +93,15 @@ public class OperacionesCliente implements IOperacionesCliente {
                 sc.next(); //LIMPIO BUFFER
             }
         } while (cicloDoWhile);
-        
+
     }
 
     @Override
     public Cliente obtenerClientePorId(int idCliente) {
-        for(Cliente cliente : listaClientes){
-        if(cliente.getIdCliente() == idCliente)
-           return cliente;
+        for (Cliente cliente : listaClientes) {
+            if (cliente.getIdCliente() == idCliente) {
+                return cliente;
+            }
         }
         return null;
     }

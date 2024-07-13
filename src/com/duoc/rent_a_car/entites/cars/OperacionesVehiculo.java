@@ -10,18 +10,25 @@ import java.util.Random;
 import java.util.Scanner;
 import com.duoc.rent_a_car.interfaces.IOperacionesVehiculo;
 import java.util.Collections;
-import java.util.List;
+import java.util.HashMap;
 
 public class OperacionesVehiculo implements IOperacionesFinancieras, IOperacionesVehiculo {
-private Map<String,Vehiculo> syncList;
+private Map<String,Vehiculo> syncListVehiculeClient;
+private Map<String ,Vehiculo > listAllVehicules;
+private Map<String,Vehiculo> syncListAllVehicule;
 
     public OperacionesVehiculo() {
+        listAllVehicules = new HashMap<>();
+        syncListAllVehicule = new HashMap<>();
     }
 
-
-    public OperacionesVehiculo(Map<String, Vehiculo> syncList) {
-        this.syncList = syncList;
+    public OperacionesVehiculo(Map<String, Vehiculo> syncListVehiculeClient, Map<String, Vehiculo> listAllVehicules, Map<String, Vehiculo> syncListAllVehicule) {
+        this.syncListVehiculeClient = syncListVehiculeClient;
+        this.listAllVehicules = listAllVehicules;
+        this.syncListAllVehicule = syncListAllVehicule;
     }
+
+    
 
     @Override
     public String generarPatente() {
@@ -49,17 +56,19 @@ private Map<String,Vehiculo> syncList;
                 switch (opcionCategoria) {
                     case 1:
                         Furgon furgon = new Furgon(generarPatente(), 10, "Toyota", "Turismo", 60000, "Furgon");
+                        listAllVehicules.put(furgon.getPatente(), furgon); //AGREGO EL VEHICULO CREADO A UNA LISTA GENERAL DE VEHICULOS
+                        syncListAllVehicule = Collections.synchronizedMap(listAllVehicules);//Paso toda lista de vehiculos a una lista syncronizada
                         System.out.println("Modelo para arrendar:");
                         System.out.println(furgon.toString());
                         clienteActual.getListaVehiculos().put(furgon.getPatente(), furgon);
-                        syncList = Collections.synchronizedMap(clienteActual.getListaVehiculos()); //USO DE LISTA SYNCRONIZADA
+                        syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos()); //USO DE LISTA SYNCRONIZADA
                         System.out.println("Imprimiendo lista de vehiculos de cliente " + clienteActual.getNombreCliente());
                         //ITERO SOBRE EL HASHMAP DE VEHICULOS QUE POSEE EL CLIENTE
                         for (Entry<String, Vehiculo> e : clienteActual.getListaVehiculos().entrySet()) {
                             System.out.println(e);
                         }
                         System.out.println("ITERANDO SOBRE LISTA SINCRONIZADA");
-                        for (Entry<String, Vehiculo> e : syncList.entrySet()) {
+                        for (Entry<String, Vehiculo> e : syncListVehiculeClient.entrySet()) {
                             System.out.println(e);
                         }
                         break;
@@ -111,8 +120,11 @@ private Map<String,Vehiculo> syncList;
     }
 
     @Override
-    public Map<String, Vehiculo> listarVehiculos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Map<String, Vehiculo> listarTodosVehiculos() {
+        for(Entry<String,Vehiculo> e :syncListAllVehicule.entrySet()){
+            System.out.println(e);
+        }
+        return syncListAllVehicule;
     }
 
     @Override

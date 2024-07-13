@@ -8,18 +8,20 @@ import java.util.Scanner;
 
 public class Rent_A_Car {
 
+    static OperacionesCliente operacionesCliente = new OperacionesCliente();
+    static OperacionesVehiculo operacionesVehiculo = new OperacionesVehiculo();
     static Scanner sc = new Scanner(System.in);
     static int opcionMenu = 0;
     static boolean romperBucle = false;
-    static Cliente cliente = new Cliente();
-    static OperacionesCliente operacionesCliente = new OperacionesCliente();
-    static OperacionesVehiculo operacionesVehiculo = new OperacionesVehiculo();
+
     public static void main(String[] args) {
 
         menu();
     }
 
     public static void menu() {
+        Cliente cliente = new Cliente();
+
         do {
             try {
                 System.out.println("Elige alguna de las siguientes opciones, escribiendo el numero segun corresponda");
@@ -38,7 +40,7 @@ public class Rent_A_Car {
             switch (opcionMenu) {
                 //REGISTRO USUARIO
                 case 1:
-                    operacionesCliente.registrarUsuario(cliente);
+                    operacionesCliente.registrarUsuario();
                     break;
                 // MOSTRAR TARIFAS DE ARRIENDO
                 case 2:
@@ -48,10 +50,11 @@ public class Rent_A_Car {
                     operacionesCliente.mostrarClientes(); //muestro los clientes registradoss
                     System.out.println("Ingrese el id del usuario que desea arrendar un vehiculo");
                     int idClienteSeleccionado = sc.nextInt();
-                   operacionesVehiculo.arrendarVehiculo(idClienteSeleccionado, operacionesCliente);
+                    operacionesVehiculo.arrendarVehiculo(idClienteSeleccionado, operacionesCliente);
                     break;
                 //VER LISTADO DE VEHICULOS ARRENDADOS
                 case 4:
+                    operacionesVehiculo.listarTodosVehiculos();
                     break;
                 //VER ARRIENDOS DE MAS DE UNA SEMANA
                 case 5:
