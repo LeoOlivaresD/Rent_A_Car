@@ -1,7 +1,5 @@
 package com.duoc.rent_a_car.entites.cars;
 
-import java.util.Random;
-
 public abstract class Vehiculo {
 
     private String patente;

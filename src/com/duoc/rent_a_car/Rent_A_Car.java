@@ -23,9 +23,11 @@ public class Rent_A_Car {
     static int opcionMenu = 0;
     static boolean romperBucle = false;
     static String archivo = "lista_clientes.txt";
+    static String archivoVehiculos = "lista_vehiculos.txt";
 
     public static void main(String[] args) {
         clientPersistentInput.cargarClienteDesdeTxt(operacionesCliente, archivo);
+        input.cargarVehiculoDesdeTxt(operacionesVehiculo, archivoVehiculos);
         menu();
     }
 

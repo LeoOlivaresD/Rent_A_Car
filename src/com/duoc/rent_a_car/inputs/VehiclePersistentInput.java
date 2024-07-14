@@ -61,28 +61,33 @@ public class VehiclePersistentInput {
                         case "diasArriendo":
                             diasArriendo = Integer.parseInt(valor);
                             break;
-                            default:
-                                    //Aca se tratara cualquier otro atributo de ser necesario
-                                break;
+                        default:
+                            //Aca se tratara cualquier otro atributo de ser necesario
+                            break;
                     }
                 }
-                switch(tipoVehiculo){
+                switch (tipoVehiculo) {
                     case "Furgon":
                         Furgon furgon = new Furgon(patente, capacidadPasajeros, marca, categoria, valorArriendo, tipoVehiculo, diasArriendo);
                         listVehiculos.add(furgon);
                         break;
-                        
+
                     case "Camion":
                         Camion camion = new Camion(patente, capacidadPasajeros, marca, categoria, valorArriendo, tipoVehiculo, diasArriendo);
                         listVehiculos.add(camion);
                         break;
-                        
+
                     case "Automovil":
                         AutoSedan auto = new AutoSedan(patente, capacidadPasajeros, marca, categoria, valorArriendo, tipoVehiculo, diasArriendo);
                         listVehiculos.add(auto);
                         break;
                 }
             }
+            // Iterar sobre la lista de vehículos y añadir cada vehículo al mapa
+            listVehiculos.forEach(vehiculo -> operacionesVehiculo.getListAllVehicules().put(vehiculo.getPatente(), vehiculo));
+            //COPIO LA DATA A LA LISTA SYNCORNIZADA DE TODOS LOS VEHICULOS
+            listVehiculos.forEach(vehiculo -> operacionesVehiculo.getSyncListAllVehicule().put(vehiculo.getPatente(), vehiculo));
+
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Lo sentimos, no se pudo crgar el archivo txt de vehiculos");

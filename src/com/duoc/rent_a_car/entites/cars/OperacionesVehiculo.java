@@ -29,6 +29,31 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
         this.syncListAllVehicule = syncListAllVehicule;
     }
 
+    public Map<String, Vehiculo> getSyncListVehiculeClient() {
+        return syncListVehiculeClient;
+    }
+
+    public void setSyncListVehiculeClient(Map<String, Vehiculo> syncListVehiculeClient) {
+        this.syncListVehiculeClient = syncListVehiculeClient;
+    }
+
+    public Map<String, Vehiculo> getListAllVehicules() {
+        return listAllVehicules;
+    }
+
+    public void setListAllVehicules(Map<String, Vehiculo> listAllVehicules) {
+        this.listAllVehicules = listAllVehicules;
+    }
+
+    public Map<String, Vehiculo> getSyncListAllVehicule() {
+        return syncListAllVehicule;
+    }
+
+    public void setSyncListAllVehicule(Map<String, Vehiculo> syncListAllVehicule) {
+        this.syncListAllVehicule = syncListAllVehicule;
+    }
+    
+    
     @Override
     public String generarPatente() {
         Random numero = new Random();
