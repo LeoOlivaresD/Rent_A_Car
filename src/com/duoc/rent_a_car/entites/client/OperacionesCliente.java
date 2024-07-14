@@ -134,24 +134,25 @@ public class OperacionesCliente implements IOperacionesCliente {
         double total = (subtotal + iva) - descuento;
 
         // Imprimir la boleta
-        System.out.println("========================================================================================================================");
-        System.out.println("|                  BriefDrive                                                                                          |");
-        System.out.println("=======================================================================================================================|");
-        System.out.println("| Dirección: " + direccion + "                                                                                         |");
-        System.out.println("| Teléfono: " + telefono + "                                                                                           |");
-        System.out.println("| Fecha: " + fechaFormateada + "                                                                                       |");
-        System.out.println("========================================================================================================================");
-        System.out.println("| Cliente: " + obtenerClientePorId(idCliente).getNombreCliente() + "                                                   |");
-        System.out.println("========================================================================================================================");
-        System.out.println("| Producto/Servicio        | " + operacionesVehiculo.identificarVehiculos(this, idCliente) + "                         |");
-        System.out.println("| Detalle                  | Cantidad: " + cantidad + "                                                                |");
-        System.out.println("|                          | Precio Unitario: " + operacionesVehiculo.valoresUnitarios(this, idCliente) + "            |");
-        System.out.println("========================================================================================================================");
-        System.out.println("| Subtotal                 | " + subtotal + "                                                                          |");
-        System.out.println("| IVA                      | " + iva + "                                                                               |");
-        System.out.println("| Descuento cliente nuevo  | " + descuento+ "                                                                          |");
-        System.out.println("| Total                    | " + total + "                                                                             |");
-        System.out.println("========================================================================================================================");
+        System.out.println("==============================================");
+        System.out.println("|                  BriefDrive                |");
+        System.out.println("==============================================");
+        System.out.println("| Dirección: " + direccion + "                    ");
+        System.out.println("| Teléfono: " + telefono + "                         ");
+        System.out.println("| Fecha: " + fechaFormateada + "                ");
+        System.out.println("==============================================");
+        System.out.println("| Cliente: " + obtenerClientePorId(idCliente).getNombreCliente() + "                           ");
+        System.out.println("==============================================");
+        System.out.println("| Producto/Servicio        | " + operacionesVehiculo.identificarVehiculos(this, idCliente) + "              ");
+        System.out.println("| Detalle                  | Cantidad: " + cantidad + "              ");
+        System.out.println("|                          | Precio Unitario: " + operacionesVehiculo.valoresUnitarios(this, idCliente) + "         ");
+        System.out.println("| Dias de arriendo         | " + operacionesVehiculo.diasArriendo(this, idCliente) );
+        System.out.println("==============================================");
+        System.out.println("| Subtotal                 | " + subtotal + "                ");
+        System.out.println("| Descuento cliente nuevo  | " + descuento+ "             ");
+        System.out.println("| IVA                      | " + iva + "                 ");
+        System.out.println("| Total                    | " + total + "                ");
+        System.out.println("==============================================");
 
     }
 }

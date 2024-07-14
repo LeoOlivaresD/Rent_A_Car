@@ -43,6 +43,7 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
     @Override
     public void arrendarVehiculo(int idCliente, OperacionesCliente operacionesCliente, VehiclePersistentOuput vehiclePersistentOuput) {
         //EN ESTA LINEA CAPTURO UN CLIENTE BUSCADO EN LA LISTA DE CLIENTES POR MEDIO DE UN ID
+        int diasArriendo = 0;
         Cliente clienteActual = operacionesCliente.obtenerClientePorId(idCliente);
         if (clienteActual != null) {
             try {
@@ -58,21 +59,17 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                         listAllVehicules.put(furgon.getPatente(), furgon); //AGREGO EL VEHICULO CREADO A UNA LISTA GENERAL DE VEHICULOS
                         //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
                         vehiclePersistentOuput.almacenarVehiculoEnTxt(furgon);
-                        syncListAllVehicule = Collections.synchronizedMap(listAllVehicules);//Paso toda lista de vehiculos a una lista syncronizada
+                        //Paso toda lista de vehiculos a una lista syncronizada DE TODOS LOS VEHICULOS
+                        syncListAllVehicule = Collections.synchronizedMap(listAllVehicules);
                         System.out.println("Modelo para arrendar:");
                         System.out.println(furgon.toString());
+                        System.out.println("Indique la cantidad de dias, que desea utilizar el vehiculo");
+                        diasArriendo = sc.nextInt();
+                        furgon.setDiasArriendo(diasArriendo);
+                        //GUARDO EL VEHICULO EN LA LIST DEL CLIENTE ACTUAL
                         clienteActual.getListaVehiculos().put(furgon.getPatente(), furgon);
-                        System.out.println("Pase");
-                        syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos()); //USO DE LISTA SYNCRONIZADA
-                        System.out.println("Imprimiendo lista de vehiculos de cliente " + clienteActual.getNombreCliente());
-                        //ITERO SOBRE EL HASHMAP DE VEHICULOS QUE POSEE EL CLIENTE
-                        for (Entry<String, Vehiculo> e : clienteActual.getListaVehiculos().entrySet()) {
-                            System.out.println(e);
-                        }
-                        System.out.println("ITERANDO SOBRE LISTA SINCRONIZADA");
-                        for (Entry<String, Vehiculo> e : syncListVehiculeClient.entrySet()) {
-                            System.out.println(e);
-                        }
+                        //USO DE LISTA SYNCRONIZADA (PASO LA LISTA DE VEHICULOS A UNA LISTA SINCRONIZADA)
+                        syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos()); 
                         break;
                     case 2:
                         Camion camion = new Camion("8 toneladas ", generarPatente(), 5, "Mercedez", "Carga pesada", 120000, "Camion");
@@ -81,12 +78,12 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                         vehiclePersistentOuput.almacenarVehiculoEnTxt(camion);
                         System.out.println("Modelo para arrendar:");
                         System.out.println(camion.toString());
+                        System.out.println("Indique la cantidad de dias, que desea utilizar el vehiculo");
+                        diasArriendo = sc.nextInt();
+                        camion.setDiasArriendo(diasArriendo);
                         clienteActual.getListaVehiculos().put(camion.getPatente(), camion);
-                        System.out.println("Imprimiendo lista de vehiculos de cliente " + clienteActual.getNombreCliente());
-                        //ITERO SOBRE EL HASHMAP DE VEHICULOS QUE POSEE EL CLIENTE
-                        for (Entry<String, Vehiculo> e : clienteActual.getListaVehiculos().entrySet()) {
-                            System.out.println(e);
-                        }
+                        //USO DE LISTA SYNCRONIZADA (PASO LA LISTA DE VEHICULOS A UNA LISTA SINCRONIZADA)
+                        syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos());
                         break;
                     case 3:
                         AutoSedan autoSedan = new AutoSedan(generarPatente(), 5, "Kia", "Particular", 50000, "Autmovil");
@@ -95,12 +92,12 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                         vehiclePersistentOuput.almacenarVehiculoEnTxt(autoSedan);
                         System.out.println("Modelo para arrendar:");
                         System.out.println(autoSedan.toString());
+                        System.out.println("Indique la cantidad de dias, que desea utilizar el vehiculo");
+                        diasArriendo = sc.nextInt();
+                        autoSedan.setDiasArriendo(diasArriendo);
                         clienteActual.getListaVehiculos().put(autoSedan.getPatente(), autoSedan);
-                        System.out.println("Imprimiendo lista de vehiculos de cliente " + clienteActual.getNombreCliente());
-                        //ITERO SOBRE EL HASHMAP DE VEHICULOS QUE POSEE EL CLIENTE
-                        for (Entry<String, Vehiculo> e : clienteActual.getListaVehiculos().entrySet()) {
-                            System.out.println(e);
-                        }
+                        //USO DE LISTA SYNCRONIZADA (PASO LA LISTA DE VEHICULOS A UNA LISTA SINCRONIZADA)
+                        syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos());
                         break;
                     default:
                 }
@@ -158,6 +155,20 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
             valoresUnitarios.setLength(valoresUnitarios.length() - 2);
         }
         return valoresUnitarios.toString();
+    }
+    //OBTENGO LOS DIAS DE ARRIENDO
+    @Override
+    public String diasArriendo(OperacionesCliente operacionesCliente, int idUsuario) {
+        Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
+        StringBuilder diasArriendo = new StringBuilder();
+        for (Entry<String, Vehiculo> vehiculos : clienteSeleccionado.getListaVehiculos().entrySet()) {
+            diasArriendo.append(vehiculos.getValue().getDiasArriendo()).append(", ");
+        }
+        // Elimina la última coma y espacio
+        if (diasArriendo.length() > 0) {
+            diasArriendo.setLength(diasArriendo.length() - 2);
+        }
+        return diasArriendo.toString();
     }
 
 }

@@ -30,7 +30,7 @@ public class Finanzas implements IOperacionesFinancieras{
         //POR MEDIO DEL ID DETECTO EL CLIENTE ESPECIFICO DEL CUAL SE CALCULARA EL TOTAL DE SUS SERVICIOS 
         Cliente clienteEncontrado = operacionesCliente.obtenerClientePorId(idCliente);
         for (Entry<String, Vehiculo> vehiculoDetectado : clienteEncontrado.getListaVehiculos().entrySet()) {
-            valorTotalServicio += vehiculoDetectado.getValue().getValorArriendo();
+            valorTotalServicio += vehiculoDetectado.getValue().getValorArriendo() * vehiculoDetectado.getValue().getDiasArriendo();
         }
 
         return valorTotalServicio;

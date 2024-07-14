@@ -10,10 +10,11 @@ public abstract class Vehiculo {
     private String categoria;
     private Integer valorArriendo;
     private String tipoVehiculo;
+    private Integer diasArriendo;
 
     public Vehiculo() {
     }
-
+    //SOBRECARGA DE METODOS
     public Vehiculo(String patente, Integer capacidadPasajeros, String marca, String categoria, Integer valorArriendo, String tipoVehiculo) {
         this.patente = patente;
         this.capacidadPasajeros = capacidadPasajeros;
@@ -22,7 +23,15 @@ public abstract class Vehiculo {
         this.valorArriendo = valorArriendo;
         this.tipoVehiculo = tipoVehiculo;
     }
-
+    public Vehiculo(String patente, Integer capacidadPasajeros, String marca, String categoria, Integer valorArriendo, String tipoVehiculo, Integer diasArriendo) {
+        this.patente = patente;
+        this.capacidadPasajeros = capacidadPasajeros;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.valorArriendo = valorArriendo;
+        this.tipoVehiculo = tipoVehiculo;
+        this.diasArriendo = diasArriendo;
+    }
     public String getPatente() {
         return patente;
     }
@@ -71,6 +80,14 @@ public abstract class Vehiculo {
         this.tipoVehiculo = tipoVehiculo;
     }
 
+    public Integer getDiasArriendo() {
+        return diasArriendo;
+    }
+
+    public void setDiasArriendo(Integer diasArriendo) {
+        this.diasArriendo = diasArriendo;
+    }
+    
     @Override
     public String toString() {
         return "Vehiculo{" + "patente=" + patente + ", capacidadPasajeros=" + capacidadPasajeros + ", marca=" + marca + ", categoria=" + categoria + ", valorArriendo=" + valorArriendo + ", tipoVehiculo=" + tipoVehiculo + '}';

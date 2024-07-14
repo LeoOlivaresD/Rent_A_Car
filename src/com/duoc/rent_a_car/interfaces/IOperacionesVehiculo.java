@@ -12,4 +12,5 @@ public interface IOperacionesVehiculo {
     public Vehiculo buscarVehiculoPorPatente(String patente);
     public String identificarVehiculos(OperacionesCliente operacionesCliente, int idUsuario);
     public String valoresUnitarios(OperacionesCliente operacionesCliente, int idUsuario);
+    public String diasArriendo(OperacionesCliente operacionesCliente, int idUsuario);
 }
