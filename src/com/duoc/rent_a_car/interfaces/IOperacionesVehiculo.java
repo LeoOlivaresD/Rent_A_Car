@@ -8,5 +8,5 @@ public interface IOperacionesVehiculo {
     public String generarPatente();
     public void arrendarVehiculo(int idCliente, OperacionesCliente operacionesCliente);
     public Map<String,Vehiculo> listarTodosVehiculos();
-    public Vehiculo listarVehiculoPorPatente();
+    public Vehiculo buscarVehiculoPorPatente(String patente);
 }

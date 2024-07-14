@@ -20,16 +20,16 @@ public class Finanzas {
         int valorConDescuento = (int) (valorArriendo - (valorArriendo * DESCUENTO_CLIENTE_NUEVO));
         return valorConDescuento;
     }
-    
+
     public int calcularTotalServicio(int idCliente, OperacionesCliente operacionesCliente) {
         int valorTotalServicio = 0;
         //POR MEDIO DEL ID DETECTO EL CLIENTE ESPECIFICO DEL CUAL SE CALCULARA EL TOTAL DE SUS SERVICIOS 
         Cliente clienteEncontrado = operacionesCliente.obtenerClientePorId(idCliente);
-        for(Entry<String, Vehiculo> vehiculoDetectado : clienteEncontrado.getListaVehiculos().entrySet()){
-        valorTotalServicio += vehiculoDetectado.getValue().getValorArriendo();
+        for (Entry<String, Vehiculo> vehiculoDetectado : clienteEncontrado.getListaVehiculos().entrySet()) {
+            valorTotalServicio += vehiculoDetectado.getValue().getValorArriendo();
         }
-        
-        return valorTotalServicio ;
+
+        return valorTotalServicio;
     }
 
 }

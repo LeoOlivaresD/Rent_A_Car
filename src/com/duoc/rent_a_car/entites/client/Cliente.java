@@ -20,12 +20,12 @@ public class Cliente {
         this.nombreCliente = nombreCliente;
         this.telefono = telefono;
     }
-    
+
     public Cliente(Integer idCliente, String nombreCliente, Integer telefono, Map<String, Vehiculo> listaVehiculos) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
-        this.telefono = telefono; 
-                                //condicion              si es verddero    si es falso
+        this.telefono = telefono;
+        //condicion              si es verddero    si es falso
         this.listaVehiculos = (listaVehiculos != null) ? listaVehiculos : new HashMap<>();
     }
 
@@ -66,5 +66,4 @@ public class Cliente {
         return "Cliente{" + "idCliente=" + idCliente + ", nombreCliente=" + nombreCliente + ", telefono=" + telefono + '}';
     }
 
-    
 }

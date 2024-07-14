@@ -139,30 +139,29 @@ public class OperacionesVehiculo implements IOperacionesFinancieras, IOperacione
     }
 
     public String identificarVehiculos(OperacionesCliente operacionesCliente, int idUsuario) {
-    Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
-    StringBuilder tiposVehiculos = new StringBuilder();
-    for (Entry<String, Vehiculo> vehiculo : clienteSeleccionado.getListaVehiculos().entrySet()) {
-        tiposVehiculos.append(vehiculo.getValue().getTipoVehiculo()).append(", ");
+        Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
+        StringBuilder tiposVehiculos = new StringBuilder();
+        for (Entry<String, Vehiculo> vehiculo : clienteSeleccionado.getListaVehiculos().entrySet()) {
+            tiposVehiculos.append(vehiculo.getValue().getTipoVehiculo()).append(", ");
+        }
+        // Elimina la última coma y espacio
+        if (tiposVehiculos.length() > 0) {
+            tiposVehiculos.setLength(tiposVehiculos.length() - 2);
+        }
+        return tiposVehiculos.toString();
     }
-    // Elimina la última coma y espacio
-    if (tiposVehiculos.length() > 0) {
-        tiposVehiculos.setLength(tiposVehiculos.length() - 2);
-    }
-    return tiposVehiculos.toString();
-}
 
     public String valoresUnitarios(OperacionesCliente operacionesCliente, int idUsuario) {
-    Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
-    StringBuilder valoresUnitarios = new StringBuilder();
-    for (Entry<String, Vehiculo> vehiculos : clienteSeleccionado.getListaVehiculos().entrySet()) {
-        valoresUnitarios.append("$").append(vehiculos.getValue().getValorArriendo()).append(", ");
+        Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
+        StringBuilder valoresUnitarios = new StringBuilder();
+        for (Entry<String, Vehiculo> vehiculos : clienteSeleccionado.getListaVehiculos().entrySet()) {
+            valoresUnitarios.append("$").append(vehiculos.getValue().getValorArriendo()).append(", ");
+        }
+        // Elimina la última coma y espacio
+        if (valoresUnitarios.length() > 0) {
+            valoresUnitarios.setLength(valoresUnitarios.length() - 2);
+        }
+        return valoresUnitarios.toString();
     }
-    // Elimina la última coma y espacio
-    if (valoresUnitarios.length() > 0) {
-        valoresUnitarios.setLength(valoresUnitarios.length() - 2);
-    }
-    return valoresUnitarios.toString();
-}
-
 
 }

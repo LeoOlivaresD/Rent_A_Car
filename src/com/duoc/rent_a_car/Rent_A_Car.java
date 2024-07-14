@@ -8,6 +8,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Rent_A_Car {
+
     static ClientPersistentOutput clientPersistent = new ClientPersistentOutput();
     static ClientPersistentInput clientPersistentInput = new ClientPersistentInput();
     static OperacionesCliente operacionesCliente = new OperacionesCliente();
@@ -16,6 +17,7 @@ public class Rent_A_Car {
     static int opcionMenu = 0;
     static boolean romperBucle = false;
     static String archivo = "lista_clientes.txt";
+
     public static void main(String[] args) {
         clientPersistentInput.cargarClienteDesdeTxt(operacionesCliente, archivo);
         menu();
@@ -42,12 +44,12 @@ public class Rent_A_Car {
                 case 1:
                     operacionesCliente.registrarUsuario(clientPersistent);
                     break;
-                    
+
                 //MOSTRAR TARIFAS DE ARRIENDO
                 case 2:
-                    
+
                     break;
-                    
+
                 //ARRENDAR VEHICULO
                 case 3:
                     operacionesCliente.mostrarClientes(); //muestro los clientes registradoss
@@ -55,7 +57,7 @@ public class Rent_A_Car {
                     int idClienteSeleccionado = sc.nextInt();
                     operacionesVehiculo.arrendarVehiculo(idClienteSeleccionado, operacionesCliente);
                     break;
-                    
+
                 //VER LISTADO DE VEHICULOS ARRENDADOS
                 case 4:
                     operacionesVehiculo.listarTodosVehiculos();

@@ -2,14 +2,15 @@ package com.duoc.rent_a_car.entites.cars;
 
 import java.util.Random;
 
-public abstract class Vehiculo{
+public abstract class Vehiculo {
+
     private String patente;
     private Integer capacidadPasajeros;
     private String marca;
     private String categoria;
     private Integer valorArriendo;
     private String tipoVehiculo;
-    
+
     public Vehiculo() {
     }
 
@@ -74,8 +75,8 @@ public abstract class Vehiculo{
     public String toString() {
         return "Vehiculo{" + "patente=" + patente + ", capacidadPasajeros=" + capacidadPasajeros + ", marca=" + marca + ", categoria=" + categoria + ", valorArriendo=" + valorArriendo + ", tipoVehiculo=" + tipoVehiculo + '}';
     }
-    
+
     //Metodo abstracto
     public abstract void showDataCar();
-    
+
 }
