@@ -1,2 +1,2 @@
-Cliente{idCliente=3943, nombreCliente=Leonardo, telefono=930985129}
-Cliente{idCliente=6165, nombreCliente=Gabriela, telefono=989896756}
+Cliente{idCliente=7069, nombreCliente=Leonardo Olivares, telefono=930985129}
+Cliente{idCliente=3905, nombreCliente=Gabriela, telefono=978785634}

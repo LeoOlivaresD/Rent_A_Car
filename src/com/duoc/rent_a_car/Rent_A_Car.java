@@ -1,9 +1,12 @@
 package com.duoc.rent_a_car;
 
 import com.duoc.rent_a_car.entites.cars.OperacionesVehiculo;
+import com.duoc.rent_a_car.entites.client.Finanzas;
 import com.duoc.rent_a_car.entites.client.OperacionesCliente;
 import com.duoc.rent_a_car.inputs.ClientPersistentInput;
+import com.duoc.rent_a_car.inputs.VehiclePersistentInput;
 import com.duoc.rent_a_car.outputs.ClientPersistentOutput;
+import com.duoc.rent_a_car.outputs.VehiclePersistentOuput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -11,8 +14,11 @@ public class Rent_A_Car {
 
     static ClientPersistentOutput clientPersistent = new ClientPersistentOutput();
     static ClientPersistentInput clientPersistentInput = new ClientPersistentInput();
+    static VehiclePersistentInput input = new VehiclePersistentInput();
+    static VehiclePersistentOuput ouput = new VehiclePersistentOuput();
     static OperacionesCliente operacionesCliente = new OperacionesCliente();
     static OperacionesVehiculo operacionesVehiculo = new OperacionesVehiculo();
+    static Finanzas finanzas = new Finanzas();
     static Scanner sc = new Scanner(System.in);
     static int opcionMenu = 0;
     static boolean romperBucle = false;
@@ -55,7 +61,7 @@ public class Rent_A_Car {
                     operacionesCliente.mostrarClientes(); //muestro los clientes registradoss
                     System.out.println("Ingrese el id del usuario que desea arrendar un vehiculo");
                     int idClienteSeleccionado = sc.nextInt();
-                    operacionesVehiculo.arrendarVehiculo(idClienteSeleccionado, operacionesCliente);
+                    operacionesVehiculo.arrendarVehiculo(idClienteSeleccionado, operacionesCliente, ouput);
                     break;
 
                 //VER LISTADO DE VEHICULOS ARRENDADOS
@@ -71,6 +77,9 @@ public class Rent_A_Car {
                     break;
                 //SALIR
                 case 6:
+                    System.out.println("Ingrese el id del cliente deseaado para generar boleta");
+                    int idCliente = sc.nextInt();
+                    operacionesCliente.generarBoleta(idCliente, finanzas, operacionesVehiculo);
                     System.out.println("Saliendo del sistema, gracias por preferir\n"
                             + "Rent a Car Brief Drive.");
                     romperBucle = true;

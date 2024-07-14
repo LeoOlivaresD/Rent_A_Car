@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Scanner;
 import com.duoc.rent_a_car.interfaces.IOperacionesVehiculo;
+import com.duoc.rent_a_car.outputs.VehiclePersistentOuput;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -40,7 +41,7 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
     }
 
     @Override
-    public void arrendarVehiculo(int idCliente, OperacionesCliente operacionesCliente) {
+    public void arrendarVehiculo(int idCliente, OperacionesCliente operacionesCliente, VehiclePersistentOuput vehiclePersistentOuput) {
         //EN ESTA LINEA CAPTURO UN CLIENTE BUSCADO EN LA LISTA DE CLIENTES POR MEDIO DE UN ID
         Cliente clienteActual = operacionesCliente.obtenerClientePorId(idCliente);
         if (clienteActual != null) {
@@ -55,10 +56,13 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                     case 1:
                         Furgon furgon = new Furgon(generarPatente(), 10, "Toyota", "Turismo", 60000, "Furgon");
                         listAllVehicules.put(furgon.getPatente(), furgon); //AGREGO EL VEHICULO CREADO A UNA LISTA GENERAL DE VEHICULOS
+                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
+                        vehiclePersistentOuput.almacenarVehiculoEnTxt(furgon);
                         syncListAllVehicule = Collections.synchronizedMap(listAllVehicules);//Paso toda lista de vehiculos a una lista syncronizada
                         System.out.println("Modelo para arrendar:");
                         System.out.println(furgon.toString());
                         clienteActual.getListaVehiculos().put(furgon.getPatente(), furgon);
+                        System.out.println("Pase");
                         syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos()); //USO DE LISTA SYNCRONIZADA
                         System.out.println("Imprimiendo lista de vehiculos de cliente " + clienteActual.getNombreCliente());
                         //ITERO SOBRE EL HASHMAP DE VEHICULOS QUE POSEE EL CLIENTE
@@ -72,6 +76,9 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                         break;
                     case 2:
                         Camion camion = new Camion("8 toneladas ", generarPatente(), 5, "Mercedez", "Carga pesada", 120000, "Camion");
+                        listAllVehicules.put(camion.getPatente(), camion); //AGREGO EL VEHICULO CREADO A UNA LISTA GENERAL DE VEHICULOS
+                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
+                        vehiclePersistentOuput.almacenarVehiculoEnTxt(camion);
                         System.out.println("Modelo para arrendar:");
                         System.out.println(camion.toString());
                         clienteActual.getListaVehiculos().put(camion.getPatente(), camion);
@@ -83,6 +90,9 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                         break;
                     case 3:
                         AutoSedan autoSedan = new AutoSedan(generarPatente(), 5, "Kia", "Particular", 50000, "Autmovil");
+                        listAllVehicules.put(autoSedan.getPatente(), autoSedan); //AGREGO EL VEHICULO CREADO A UNA LISTA GENERAL DE VEHICULOS
+                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
+                        vehiclePersistentOuput.almacenarVehiculoEnTxt(autoSedan);
                         System.out.println("Modelo para arrendar:");
                         System.out.println(autoSedan.toString());
                         clienteActual.getListaVehiculos().put(autoSedan.getPatente(), autoSedan);
@@ -122,6 +132,7 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
         return null;
     }
 
+    @Override
     public String identificarVehiculos(OperacionesCliente operacionesCliente, int idUsuario) {
         Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
         StringBuilder tiposVehiculos = new StringBuilder();
@@ -135,6 +146,7 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
         return tiposVehiculos.toString();
     }
 
+    @Override
     public String valoresUnitarios(OperacionesCliente operacionesCliente, int idUsuario) {
         Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
         StringBuilder valoresUnitarios = new StringBuilder();

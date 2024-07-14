@@ -1,0 +1,30 @@
+Vehiculo{patente=FG-37, capacidadPasajeros=5, marca=Mercedez, categoria=Carga pesada, valorArriendo=120000, tipoVehiculo=Camion}
+Vehiculo{patente=FG-713, capacidadPasajeros=5, marca=Kia, categoria=Particular, valorArriendo=50000, tipoVehiculo=Autmovil}
+Vehiculo{patente=FG-608, capacidadPasajeros=5, marca=Kia, categoria=Particular, valorArriendo=50000, tipoVehiculo=Autmovil}
+Vehiculo{patente=FG-716, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-409, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-129, capacidadPasajeros=5, marca=Mercedez, categoria=Carga pesada, valorArriendo=120000, tipoVehiculo=Camion}
+Vehiculo{patente=FG-803, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-228, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-766, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-160, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-507, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-219, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-606, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-435, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-58, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-255, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-981, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-934, capacidadPasajeros=5, marca=Mercedez, categoria=Carga pesada, valorArriendo=120000, tipoVehiculo=Camion}
+Vehiculo{patente=FG-983, capacidadPasajeros=5, marca=Kia, categoria=Particular, valorArriendo=50000, tipoVehiculo=Autmovil}
+Vehiculo{patente=FG-176, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-659, capacidadPasajeros=5, marca=Mercedez, categoria=Carga pesada, valorArriendo=120000, tipoVehiculo=Camion}
+Vehiculo{patente=FG-666, capacidadPasajeros=5, marca=Kia, categoria=Particular, valorArriendo=50000, tipoVehiculo=Autmovil}
+Vehiculo{patente=FG-706, capacidadPasajeros=5, marca=Mercedez, categoria=Carga pesada, valorArriendo=120000, tipoVehiculo=Camion}
+Vehiculo{patente=FG-939, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-674, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-355, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-258, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-46, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-643, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}
+Vehiculo{patente=FG-517, capacidadPasajeros=10, marca=Toyota, categoria=Turismo, valorArriendo=60000, tipoVehiculo=Furgon}

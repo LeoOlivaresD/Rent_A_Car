@@ -17,10 +17,10 @@ public class Finanzas implements IOperacionesFinancieras{
         return valorConIva;
     }
 
-    //METODO QUE APLICARA DESCUENTOS A CLIENTES NUEVOS
+    //METODO QUE APLICARA DESCUENTOS A CLIENTES NUEVOS por el 10%
     @Override
-    public int aplicarDescuentoClienteNuevo(int valorArriendo) {
-        int valorConDescuento = (int) (valorArriendo - (valorArriendo * DESCUENTO_CLIENTE_NUEVO));
+    public int aplicarDescuentoClienteNuevo(int subTotal) {
+        int valorConDescuento = (int)(subTotal * DESCUENTO_CLIENTE_NUEVO);
         return valorConDescuento;
     }
     //Con este metodo obtendre el sub total

@@ -19,6 +19,7 @@ public class Cliente {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.telefono = telefono;
+        this.listaVehiculos = new HashMap<>();
     }
 
     public Cliente(Integer idCliente, String nombreCliente, Integer telefono, Map<String, Vehiculo> listaVehiculos) {
