@@ -2,7 +2,6 @@ package com.duoc.rent_a_car.entites.cars;
 
 import com.duoc.rent_a_car.entites.client.Cliente;
 import com.duoc.rent_a_car.entites.client.OperacionesCliente;
-import com.duoc.rent_a_car.interfaces.IOperacionesFinancieras;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -12,7 +11,7 @@ import com.duoc.rent_a_car.interfaces.IOperacionesVehiculo;
 import java.util.Collections;
 import java.util.HashMap;
 
-public class OperacionesVehiculo implements IOperacionesFinancieras, IOperacionesVehiculo {
+public class OperacionesVehiculo implements IOperacionesVehiculo {
 
     private Map<String, Vehiculo> syncListVehiculeClient;
     private Map<String, Vehiculo> listAllVehicules;
@@ -101,21 +100,6 @@ public class OperacionesVehiculo implements IOperacionesFinancieras, IOperacione
         } else {
             System.out.println("Lo sentimos, el id ingresado no ha sido encontrado");
         }
-    }
-
-    @Override
-    public void calcularIva() {
-
-    }
-
-    @Override
-    public void aplicarDescuento() {
-
-    }
-
-    @Override
-    public void mostrarDetalleBoleta() {
-
     }
 
     @Override
