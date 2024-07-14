@@ -11,6 +11,7 @@ import com.duoc.rent_a_car.interfaces.IOperacionesVehiculo;
 import com.duoc.rent_a_car.outputs.VehiclePersistentOuput;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class OperacionesVehiculo implements IOperacionesVehiculo {
 
@@ -52,8 +53,7 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
     public void setSyncListAllVehicule(Map<String, Vehiculo> syncListAllVehicule) {
         this.syncListAllVehicule = syncListAllVehicule;
     }
-    
-    
+
     @Override
     public String generarPatente() {
         Random numero = new Random();
@@ -195,6 +195,14 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
             diasArriendo.setLength(diasArriendo.length() - 2);
         }
         return diasArriendo.toString();
+    }
+
+    public void filtrarArriendosPorMasDeUnaSemana() {
+        for (Entry<String, Vehiculo> vehiculos : syncListAllVehicule.entrySet()) {
+            if (vehiculos.getValue().getDiasArriendo() >= 6) {
+                System.out.println(vehiculos.toString());
+            }
+        }
     }
 
 }
