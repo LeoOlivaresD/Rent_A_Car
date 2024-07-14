@@ -1,7 +1,10 @@
 package com.duoc.rent_a_car.entites.client;
 
+import com.duoc.rent_a_car.entites.cars.OperacionesVehiculo;
 import com.duoc.rent_a_car.interfaces.IOperacionesCliente;
 import com.duoc.rent_a_car.outputs.ClientPersistentOutput;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -107,5 +110,47 @@ public class OperacionesCliente implements IOperacionesCliente {
             }
         }
         return null;
+    }
+
+    public void generarBoleta(int idCliente, Finanzas finanzas, OperacionesVehiculo operacionesVehiculo) {
+        String direccion = "Valparaiso, Indepencia 1239";
+        String telefono = "(+56)967675424";
+        // Obtengo la fecha y hora actuales
+        LocalDateTime fechaActual = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        String fechaFormateada = fechaActual.format(formatter);
+        //Identifico el cliente 
+        Cliente clienteSeleccionado = obtenerClientePorId(idCliente);
+        //Detecto el numero de vehiculos que posee
+        int cantidad = clienteSeleccionado.getListaVehiculos().size();
+        //Por medio del metodo de finanzas, obtengo el subTotal;
+        double subtotal = finanzas.calcularTotalServicio(idCliente, this);
+
+        //Enseño el iva del servicio
+        double iva = subtotal * 0.19;
+        //Aplico descuento por compra
+        double descuento = finanzas.aplicarDescuentoClienteNuevo((int) subtotal);
+        //Genero el total de la compra
+        double total = subtotal + iva - descuento;
+
+        // Imprimir la boleta
+        System.out.println("==============================================");
+        System.out.println("|                  BriefDrive                |");
+        System.out.println("==============================================");
+        System.out.println("| Dirección: " + direccion + "                    |");
+        System.out.println("| Teléfono: " + telefono + "                         |");
+        System.out.println("| Fecha: " + fechaFormateada + "                |");
+        System.out.println("==============================================");
+        System.out.println("| Cliente: " + cliente + "                           |");
+        System.out.println("==============================================");
+        System.out.println("| Producto/Servicio        | " + operacionesVehiculo.identificarVehiculos(this, idCliente) + "              |");
+        System.out.println("| Detalle                  | Cantidad: " + cantidad + "              |");
+        System.out.println("|                          | Precio Unitario: " + operacionesVehiculo.valoresUnitarios(this, idCliente) + "         |");
+        System.out.println("==============================================");
+        System.out.println("| Subtotal                 | " + subtotal + "                |");
+        System.out.println("| IVA                      | " + iva + "                 |");
+        System.out.println("| Total                    | " + total + "                |");
+        System.out.println("==============================================");
+
     }
 }
