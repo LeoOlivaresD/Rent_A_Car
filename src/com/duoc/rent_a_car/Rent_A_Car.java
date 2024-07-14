@@ -32,13 +32,18 @@ public class Rent_A_Car {
     public static void menu() {
         do {
             try {
-                System.out.println("Elige alguna de las siguientes opciones, escribiendo el numero segun corresponda");
-                System.out.println("1: Registrar usuario (selecciona esta opcion para poder arrendar vehiculos.)\n"
-                        + "2: Mostrar tarifas de arriendo.\n"
-                        + "3: Arrendar vehiculo.\n"
-                        + "4: Ver listado de vehiculos arrendados.\n"
-                        + "5: Ver vehiculos arrendados por mas de una semana.\n"
-                        + "6: Sair del sistema.");
+                System.out.println("====================================================================================================");
+                System.out.println("|                  BriefDrive                                                                      |");
+                System.out.println("====================================================================================================");
+                System.out.println("| Elige alguna de las siguientes opciones, escribiendo el numero segun corresponda                   |");
+                System.out.println("| 1: Registrar usuario (selecciona esta opcion para poder arrendar vehiculos.)                     |");
+                System.out.println("| 2: Mostrar tarifas de arriendo.                                                                  |");
+                System.out.println("| 3: Arrendar vehiculo.                                                                            |");
+                System.out.println("| 4: Ver listado de vehiculos arrendados.                                                          |");
+                System.out.println("| 5: Ver vehiculos arrendados por mas de una semana.                                               |");
+                System.out.println("| 6: Sair del sistema.                                                                             |");
+                System.out.println("====================================================================================================");
+
                 opcionMenu = sc.nextInt();
             } catch (InputMismatchException e) {
                 e.printStackTrace();
