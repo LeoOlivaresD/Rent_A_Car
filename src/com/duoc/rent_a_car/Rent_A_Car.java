@@ -1,27 +1,27 @@
 package com.duoc.rent_a_car;
 
 import com.duoc.rent_a_car.entites.cars.OperacionesVehiculo;
-import com.duoc.rent_a_car.entites.client.Cliente;
 import com.duoc.rent_a_car.entites.client.OperacionesCliente;
+import com.duoc.rent_a_car.inputs.ClientPersistentInput;
+import com.duoc.rent_a_car.outputs.ClientPersistentOutput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Rent_A_Car {
-
+    static ClientPersistentOutput clientPersistent = new ClientPersistentOutput();
+    static ClientPersistentInput clientPersistentInput = new ClientPersistentInput();
     static OperacionesCliente operacionesCliente = new OperacionesCliente();
     static OperacionesVehiculo operacionesVehiculo = new OperacionesVehiculo();
     static Scanner sc = new Scanner(System.in);
     static int opcionMenu = 0;
     static boolean romperBucle = false;
-
+    static String archivo = "lista_clientes.txt";
     public static void main(String[] args) {
-
+        clientPersistentInput.cargarClienteDesdeTxt(operacionesCliente, archivo);
         menu();
     }
 
     public static void menu() {
-        Cliente cliente = new Cliente();
-
         do {
             try {
                 System.out.println("Elige alguna de las siguientes opciones, escribiendo el numero segun corresponda");
@@ -40,11 +40,14 @@ public class Rent_A_Car {
             switch (opcionMenu) {
                 //REGISTRO USUARIO
                 case 1:
-                    operacionesCliente.registrarUsuario();
+                    operacionesCliente.registrarUsuario(clientPersistent);
                     break;
-                // MOSTRAR TARIFAS DE ARRIENDO
+                    
+                //MOSTRAR TARIFAS DE ARRIENDO
                 case 2:
+                    
                     break;
+                    
                 //ARRENDAR VEHICULO
                 case 3:
                     operacionesCliente.mostrarClientes(); //muestro los clientes registradoss
@@ -52,12 +55,17 @@ public class Rent_A_Car {
                     int idClienteSeleccionado = sc.nextInt();
                     operacionesVehiculo.arrendarVehiculo(idClienteSeleccionado, operacionesCliente);
                     break;
+                    
                 //VER LISTADO DE VEHICULOS ARRENDADOS
                 case 4:
                     operacionesVehiculo.listarTodosVehiculos();
                     break;
                 //VER ARRIENDOS DE MAS DE UNA SEMANA
                 case 5:
+                    String patente;
+                    System.out.println("Buscando un auto por patente, ingrese patente");
+                    patente = sc.nextLine();
+                    operacionesVehiculo.buscarVehiculoPorPatente(patente);
                     break;
                 //SALIR
                 case 6:
