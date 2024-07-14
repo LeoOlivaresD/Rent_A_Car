@@ -8,6 +8,10 @@ public class Furgon extends Vehiculo{
     public Furgon(String patente, Integer capacidadPasajeros, String marca, String categoria, Integer valorArriendo, String tipoVehiculo) {
         super(patente, capacidadPasajeros, marca, categoria, valorArriendo, tipoVehiculo);
     }
+
+    public Furgon(String patente, Integer capacidadPasajeros, String marca, String categoria, Integer valorArriendo, String tipoVehiculo, Integer diasArriendo) {
+        super(patente, capacidadPasajeros, marca, categoria, valorArriendo, tipoVehiculo, diasArriendo);
+    }
     
     @Override
     public void showDataCar() {

@@ -87,11 +87,13 @@ public abstract class Vehiculo {
     public void setDiasArriendo(Integer diasArriendo) {
         this.diasArriendo = diasArriendo;
     }
-    
+
     @Override
     public String toString() {
-        return "Vehiculo{" + "patente=" + patente + ", capacidadPasajeros=" + capacidadPasajeros + ", marca=" + marca + ", categoria=" + categoria + ", valorArriendo=" + valorArriendo + ", tipoVehiculo=" + tipoVehiculo + '}';
+        return "Vehiculo{" + "patente=" + patente + ", capacidadPasajeros=" + capacidadPasajeros + ", marca=" + marca + ", categoria=" + categoria + ", valorArriendo=" + valorArriendo + ", tipoVehiculo=" + tipoVehiculo + ", diasArriendo=" + diasArriendo + '}';
     }
+    
+   
 
     //Metodo abstracto
     public abstract void showDataCar();

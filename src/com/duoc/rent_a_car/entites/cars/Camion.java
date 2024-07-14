@@ -12,6 +12,10 @@ public class Camion extends Vehiculo {
         this.capacidadDeCarga = capacidadDeCarga;
     }
 
+    public Camion(String patente, Integer capacidadPasajeros, String marca, String categoria, Integer valorArriendo, String tipoVehiculo, Integer diasArriendo) {
+        super(patente, capacidadPasajeros, marca, categoria, valorArriendo, tipoVehiculo, diasArriendo);
+    }
+    
     public String getCapacidadDeCarga() {
         return capacidadDeCarga;
     }

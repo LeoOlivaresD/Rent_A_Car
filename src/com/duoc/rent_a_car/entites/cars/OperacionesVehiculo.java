@@ -57,8 +57,6 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                     case 1:
                         Furgon furgon = new Furgon(generarPatente(), 10, "Toyota", "Turismo", 60000, "Furgon");
                         listAllVehicules.put(furgon.getPatente(), furgon); //AGREGO EL VEHICULO CREADO A UNA LISTA GENERAL DE VEHICULOS
-                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
-                        vehiclePersistentOuput.almacenarVehiculoEnTxt(furgon);
                         //Paso toda lista de vehiculos a una lista syncronizada DE TODOS LOS VEHICULOS
                         syncListAllVehicule = Collections.synchronizedMap(listAllVehicules);
                         System.out.println("Modelo para arrendar:");
@@ -68,19 +66,21 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                         furgon.setDiasArriendo(diasArriendo);
                         //GUARDO EL VEHICULO EN LA LIST DEL CLIENTE ACTUAL
                         clienteActual.getListaVehiculos().put(furgon.getPatente(), furgon);
+                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
+                        vehiclePersistentOuput.almacenarVehiculoEnTxt(furgon);
                         //USO DE LISTA SYNCRONIZADA (PASO LA LISTA DE VEHICULOS A UNA LISTA SINCRONIZADA)
-                        syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos()); 
+                        syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos());
                         break;
                     case 2:
                         Camion camion = new Camion("8 toneladas ", generarPatente(), 5, "Mercedez", "Carga pesada", 120000, "Camion");
                         listAllVehicules.put(camion.getPatente(), camion); //AGREGO EL VEHICULO CREADO A UNA LISTA GENERAL DE VEHICULOS
-                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
-                        vehiclePersistentOuput.almacenarVehiculoEnTxt(camion);
                         System.out.println("Modelo para arrendar:");
                         System.out.println(camion.toString());
                         System.out.println("Indique la cantidad de dias, que desea utilizar el vehiculo");
                         diasArriendo = sc.nextInt();
                         camion.setDiasArriendo(diasArriendo);
+                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
+                        vehiclePersistentOuput.almacenarVehiculoEnTxt(camion);
                         clienteActual.getListaVehiculos().put(camion.getPatente(), camion);
                         //USO DE LISTA SYNCRONIZADA (PASO LA LISTA DE VEHICULOS A UNA LISTA SINCRONIZADA)
                         syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos());
@@ -88,13 +88,13 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
                     case 3:
                         AutoSedan autoSedan = new AutoSedan(generarPatente(), 5, "Kia", "Particular", 50000, "Autmovil");
                         listAllVehicules.put(autoSedan.getPatente(), autoSedan); //AGREGO EL VEHICULO CREADO A UNA LISTA GENERAL DE VEHICULOS
-                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
-                        vehiclePersistentOuput.almacenarVehiculoEnTxt(autoSedan);
                         System.out.println("Modelo para arrendar:");
                         System.out.println(autoSedan.toString());
                         System.out.println("Indique la cantidad de dias, que desea utilizar el vehiculo");
                         diasArriendo = sc.nextInt();
                         autoSedan.setDiasArriendo(diasArriendo);
+                        //AGREGO EL VEHICULO CREADO AL ARCHIVO TXT
+                        vehiclePersistentOuput.almacenarVehiculoEnTxt(autoSedan);
                         clienteActual.getListaVehiculos().put(autoSedan.getPatente(), autoSedan);
                         //USO DE LISTA SYNCRONIZADA (PASO LA LISTA DE VEHICULOS A UNA LISTA SINCRONIZADA)
                         syncListVehiculeClient = Collections.synchronizedMap(clienteActual.getListaVehiculos());
@@ -156,6 +156,7 @@ public class OperacionesVehiculo implements IOperacionesVehiculo {
         }
         return valoresUnitarios.toString();
     }
+
     //OBTENGO LOS DIAS DE ARRIENDO
     @Override
     public String diasArriendo(OperacionesCliente operacionesCliente, int idUsuario) {
