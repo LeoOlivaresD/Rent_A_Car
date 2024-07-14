@@ -13,9 +13,10 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public class OperacionesVehiculo implements IOperacionesFinancieras, IOperacionesVehiculo {
-private Map<String,Vehiculo> syncListVehiculeClient;
-private Map<String ,Vehiculo > listAllVehicules;
-private Map<String,Vehiculo> syncListAllVehicule;
+
+    private Map<String, Vehiculo> syncListVehiculeClient;
+    private Map<String, Vehiculo> listAllVehicules;
+    private Map<String, Vehiculo> syncListAllVehicule;
 
     public OperacionesVehiculo() {
         listAllVehicules = new HashMap<>();
@@ -27,8 +28,6 @@ private Map<String,Vehiculo> syncListAllVehicule;
         this.listAllVehicules = listAllVehicules;
         this.syncListAllVehicule = syncListAllVehicule;
     }
-
-    
 
     @Override
     public String generarPatente() {
@@ -73,7 +72,7 @@ private Map<String,Vehiculo> syncListAllVehicule;
                         }
                         break;
                     case 2:
-                        Camion camion = new Camion("8 toneladas ",generarPatente(), 5, "Mercedez", "Carga pesada", 120000, "Camion");
+                        Camion camion = new Camion("8 toneladas ", generarPatente(), 5, "Mercedez", "Carga pesada", 120000, "Camion");
                         System.out.println("Modelo para arrendar:");
                         System.out.println(camion.toString());
                         clienteActual.getListaVehiculos().put(camion.getPatente(), camion);
@@ -106,7 +105,7 @@ private Map<String,Vehiculo> syncListAllVehicule;
 
     @Override
     public void calcularIva() {
-        
+
     }
 
     @Override
@@ -121,15 +120,49 @@ private Map<String,Vehiculo> syncListAllVehicule;
 
     @Override
     public Map<String, Vehiculo> listarTodosVehiculos() {
-        for(Entry<String,Vehiculo> e :syncListAllVehicule.entrySet()){
+        for (Entry<String, Vehiculo> e : syncListAllVehicule.entrySet()) {
             System.out.println(e);
         }
         return syncListAllVehicule;
     }
 
     @Override
-    public Vehiculo listarVehiculoPorPatente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Vehiculo buscarVehiculoPorPatente(String patente) {
+        for (Entry<String, Vehiculo> e : syncListAllVehicule.entrySet()) {
+            if (e.getValue().getPatente().equals(patente)) {
+                System.out.println("Vehiculo encontrado");
+                return e.getValue();
+            }
+        }
+        System.out.println("Lo sentimos, no hemos encontrado un vehiculo registrado con la patente ingresada");
+        return null;
     }
+
+    public String identificarVehiculos(OperacionesCliente operacionesCliente, int idUsuario) {
+    Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
+    StringBuilder tiposVehiculos = new StringBuilder();
+    for (Entry<String, Vehiculo> vehiculo : clienteSeleccionado.getListaVehiculos().entrySet()) {
+        tiposVehiculos.append(vehiculo.getValue().getTipoVehiculo()).append(", ");
+    }
+    // Elimina la última coma y espacio
+    if (tiposVehiculos.length() > 0) {
+        tiposVehiculos.setLength(tiposVehiculos.length() - 2);
+    }
+    return tiposVehiculos.toString();
+}
+
+    public String valoresUnitarios(OperacionesCliente operacionesCliente, int idUsuario) {
+    Cliente clienteSeleccionado = operacionesCliente.obtenerClientePorId(idUsuario);
+    StringBuilder valoresUnitarios = new StringBuilder();
+    for (Entry<String, Vehiculo> vehiculos : clienteSeleccionado.getListaVehiculos().entrySet()) {
+        valoresUnitarios.append("$").append(vehiculos.getValue().getValorArriendo()).append(", ");
+    }
+    // Elimina la última coma y espacio
+    if (valoresUnitarios.length() > 0) {
+        valoresUnitarios.setLength(valoresUnitarios.length() - 2);
+    }
+    return valoresUnitarios.toString();
+}
+
 
 }
