@@ -1,6 +1,7 @@
 package com.duoc.rent_a_car.entites.client;
 
 import com.duoc.rent_a_car.interfaces.IOperacionesCliente;
+import com.duoc.rent_a_car.outputs.ClientPersistentOutput;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -49,7 +50,7 @@ public class OperacionesCliente implements IOperacionesCliente {
     //Metodo implementdo por interface
     //CON CADA LLAMADA AL METODO CREARÉ NUEVOS USUARIOS QUE ALACENARÉ EN MI LISTA
     @Override
-    public void registrarUsuario() {
+    public void registrarUsuario(ClientPersistentOutput clientPersistent) {
         Cliente cliente = new Cliente();
         Boolean cicloDoWhile = true;
         Random rand = new Random();
@@ -84,6 +85,8 @@ public class OperacionesCliente implements IOperacionesCliente {
                     System.out.println("Telefono registrado !");
                     //ALMACENO MI USUARIO EN LA LISTA
                     listaClientes.add(cliente);
+                    //GUARDO ESA LISTA EN UN TXT
+                    clientPersistent.almacenarUsuariosEnTxt(cliente);
                     System.out.println("USUARIO REGISTRADO !");
                     cicloDoWhile = false;
                 }
