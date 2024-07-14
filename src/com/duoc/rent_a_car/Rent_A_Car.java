@@ -3,6 +3,8 @@ package com.duoc.rent_a_car;
 import com.duoc.rent_a_car.entites.cars.OperacionesVehiculo;
 import com.duoc.rent_a_car.entites.client.Finanzas;
 import com.duoc.rent_a_car.entites.client.OperacionesCliente;
+import com.duoc.rent_a_car.entites.threads.CargarDataCliente;
+import com.duoc.rent_a_car.entites.threads.CargarDataVehiculo;
 import com.duoc.rent_a_car.inputs.ClientPersistentInput;
 import com.duoc.rent_a_car.inputs.VehiclePersistentInput;
 import com.duoc.rent_a_car.outputs.ClientPersistentOutput;
@@ -12,9 +14,9 @@ import java.util.Scanner;
 
 public class Rent_A_Car {
 
-    static ClientPersistentOutput clientPersistent = new ClientPersistentOutput();
     static ClientPersistentInput clientPersistentInput = new ClientPersistentInput();
-    static VehiclePersistentInput input = new VehiclePersistentInput();
+    static ClientPersistentOutput clientPersistent = new ClientPersistentOutput();
+    static VehiclePersistentInput persistentInput = new VehiclePersistentInput();
     static VehiclePersistentOuput ouput = new VehiclePersistentOuput();
     static OperacionesCliente operacionesCliente = new OperacionesCliente();
     static OperacionesVehiculo operacionesVehiculo = new OperacionesVehiculo();
@@ -22,12 +24,26 @@ public class Rent_A_Car {
     static Scanner sc = new Scanner(System.in);
     static int opcionMenu = 0;
     static boolean romperBucle = false;
-    static String archivo = "lista_clientes.txt";
-    static String archivoVehiculos = "lista_vehiculos.txt";
 
     public static void main(String[] args) {
-        clientPersistentInput.cargarClienteDesdeTxt(operacionesCliente, archivo);
-        input.cargarVehiculoDesdeTxt(operacionesVehiculo, archivoVehiculos);
+        //COMIENZO A INSTANCIAS MIS CLASES QUE MANEJRAN HILOS PARA CARGAR LA INFORMACION DE CLIENTES Y VEHICULOS
+        Thread clienteThread = new Thread(new CargarDataCliente(operacionesCliente, clientPersistentInput));
+        Thread vehiculoThread = new Thread(new CargarDataVehiculo(persistentInput, operacionesVehiculo));
+        
+        //INICIO LOS HILOS
+        clienteThread.start(); 
+        vehiculoThread.start();
+
+        try {
+            clienteThread.join();
+            synchronized (persistentInput) {
+                persistentInput.notifyAll();
+            }
+            vehiculoThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        
         menu();
     }
 
