@@ -9,18 +9,22 @@ public class Cliente {
     private Integer idCliente;
     private String nombreCliente;
     private Integer telefono;
-    private Vehiculo vehiculo;
     private Map<String, Vehiculo> listaVehiculos;
 
     public Cliente() {
         this.listaVehiculos = new HashMap<>(); // Inicialización del HashMap
     }
 
-    public Cliente(Integer idCliente, String nombreCliente, Integer telefono, Vehiculo vehiculo, Map<String, Vehiculo> listaVehiculos) {
+    public Cliente(Integer idCliente, String nombreCliente, Integer telefono) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.telefono = telefono;
-        this.vehiculo = vehiculo; 
+    }
+    
+    public Cliente(Integer idCliente, String nombreCliente, Integer telefono, Map<String, Vehiculo> listaVehiculos) {
+        this.idCliente = idCliente;
+        this.nombreCliente = nombreCliente;
+        this.telefono = telefono; 
                                 //condicion              si es verddero    si es falso
         this.listaVehiculos = (listaVehiculos != null) ? listaVehiculos : new HashMap<>();
     }
@@ -41,14 +45,6 @@ public class Cliente {
         this.nombreCliente = nombreCliente;
     }
 
-    public Vehiculo getVehiculo() {
-        return vehiculo;
-    }
-
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
-    }
-
     public Map<String, Vehiculo> getListaVehiculos() {
         return listaVehiculos;
     }
@@ -67,6 +63,8 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "idCliente=" + idCliente + ", nombreCliente=" + nombreCliente + ", telefono=" + telefono + ", vehiculo=" + vehiculo + ", listaVehiculos=" + listaVehiculos + '}';
+        return "Cliente{" + "idCliente=" + idCliente + ", nombreCliente=" + nombreCliente + ", telefono=" + telefono + '}';
     }
+
+    
 }
